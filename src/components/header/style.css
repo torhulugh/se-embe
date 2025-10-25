@@ -1,0 +1,146 @@
+header {
+    display: flex;
+    position: fixed;
+    width: 97%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px 0px 20px;
+    background-color: #f8f9fa;
+    /* border-bottom: 1px solid #eee; */
+    z-index: 1000;
+}
+#site-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #5A735C;
+}
+#header--right--section {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+.Omuun--button--container--header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap: 20px;
+    padding: 15px;
+    border-radius: 15px;
+}
+.Omuun--button--header {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    background-image: radial-gradient(farthest-side at 20px -50px, #94a7a146 5%, #425C58 14%, #3D5D57 47%, #364C48 74%, #30453D 100%);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    width: 200px;
+    height: 44px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    filter: drop-shadow(0px 4px 11px #64837ed2);
+    transition: all 0.2s ease;
+}
+.Omuun--button--header:hover {
+    scale: 1.05;
+}
+
+.Omuun--button--text--header {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    color: #d3d3d3;
+    width: 80%;
+    font-size: 1rem;
+    text-align: center;
+    filter: drop-shadow(1px 1px 1px #000000d0);
+    letter-spacing: 0.05rem;
+    z-index: 2;
+}
+
+.Omuun--button--inner--header {
+    display: flex;
+    position: relative;
+    background-image: linear-gradient(160deg, #313D39, #4D6356, #303C38);
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #8d9426;
+    cursor: pointer;
+    width: 95.8%;
+    filter: opacity(30%);
+    height: 85%;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    justify-content: center;
+    align-items: center;
+    justify-content: center;
+}
+.top--blur--effect--header {
+    display: flex;
+    background-color: #71918C;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    cursor: pointer;
+    width: 80%;
+    top: 10px;
+    filter: blur(4px);
+    height: 15%;
+    transition: background-color 0.3s ease;
+    align-items: center;
+}
+.right--blur--effect--header {
+    display: flex;
+    background-color: #71918C;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    cursor: pointer;
+    width: 2.5px;
+    height: 20px;
+    top: 10px;
+    right: 10px;
+    filter: blur(2.8px);
+    
+    transition: background-color 0.3s ease;
+    align-items: center;
+}
+.left--blur--effect--header4 {
+    display: flex;
+    background-color: #71918C;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    cursor: pointer;
+    width: 5px;
+    top: 8px;
+    left: 19px;
+    filter: blur(5px);
+    height: 20px;
+    transition: background-color 0.3s ease;
+    align-items: center;
+}
+#header--icons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    
+    
+}
+#settings-icon, #notification-icon {
+    width: 24px;
+    cursor: pointer;
+    transition: filter 0.3s ease;
+}
+#settings-icon:hover {
+    filter: brightness(0) invert(0.7);}
+#notification-icon:hover {
+    filter: brightness(0) invert(0.7);}

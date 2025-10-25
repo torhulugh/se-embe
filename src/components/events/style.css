@@ -1,0 +1,108 @@
+#event--details--title {
+    display: flex;
+    font-size: 1.2rem;
+    font-weight: 600;
+    width: 80%;
+    color: #333;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+#blur--edge--effect {
+    display: flex;
+    position: absolute;
+    border: 4px solid #C5CDDE;
+    width: 94%;
+    height: 95%;
+    border-radius: 20px;
+    filter: blur(6px);
+    transform: translate(1.3%, -1.6%);
+}
+#right--section--table--header {
+    display: flex;
+    position: relative;
+    width: 97%;
+    height: fit-content;
+    margin-top: 0px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    border: 1px solid #CECC97;
+    align-content: center;
+    gap: 200px;
+}
+#right--section--table--header p {
+    display: flex;
+    position: relative;
+    margin: 0px;
+    color: #747575;
+    padding: 8px 0px;
+}
+#right--section--table--body {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 97%;
+    height: 75%;
+    margin-top: 10px;
+    border-radius: 10px;
+    border: 1px solid #CECC97;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+    overflow: scroll;
+    z-index: 22;
+}
+#right--section--table--body p {
+    display: flex;
+    position: relative;
+    margin: 0px;
+    color: #747575
+}
+.table--row--message {
+    display: flex;
+    position: relative;
+    margin: 0px;
+    width: 400px;
+    height: 35px;
+    overflow: hidden;
+    color: #747575;
+}
+#right--section--table--body::-webkit-scrollbar {
+    width: 8px;
+}
+#right--section--table--body::-webkit-scrollbar-thumb {
+    background-color: #CECC97;
+    border-radius: 10px;
+}
+#right--section--table--body::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+.table--row--container {
+    display: flex;
+    position: relative;
+    width: 97%;
+    height: fit-content;
+    background-color: #FDFDFF;
+    border-bottom: 1px solid #DFE1E3;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 10px;
+    align-content: center;
+    gap: 100px;
+}
+.table--row--container:hover {
+    background-color: #d4f7eb4b;
+    /* border-bottom: 1px solid transparent; */
+}
+.table--row--actionsButtons{
+    display: flex;
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+    gap: 10px;
+}
