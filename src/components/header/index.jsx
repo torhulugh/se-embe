@@ -3,7 +3,7 @@ import "./style.css";
 export default function Header() {
   return (
     <header>
-      <p id="site-logo">Se-Embe</p>
+      <a href="/" id="site-logo">Se-Embe</a>
       <section id="header--right--section">
         <section className="Omuun--button--container--header">
           <div className="Omuun--button--header">

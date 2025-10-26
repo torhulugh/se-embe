@@ -22,11 +22,11 @@ function App() {
               <p id="note--header--title">Today's Overview</p>
               <img
                 id="overview--header--deco"
-                src="images/overview-header.png"
+                src="public/overview-header.png"
                 alt="edit-icon"
               />
             </div>
-            <img id="notes-lines" src="images/notes-lines.png" alt="" />
+            <img id="notes-lines" src="public/notes-lines.png" alt="" />
           </div>
         </section>
         {/* right section */}
@@ -54,6 +54,13 @@ function App() {
               {/* 🍇 */}
             </div>
             {/* event table header */}
+            <div id="right--section--table--header">
+              <p id="table--header--event">Event</p>
+              <p id="table--header--time">Celebrant</p>
+              <p id="table--header--location">Date</p>
+              <p id="table--header--status">Message</p>
+            </div>
+          {/* event table body */}
             <Events />
           </div>
         </section>

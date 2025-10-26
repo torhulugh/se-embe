@@ -192,6 +192,10 @@
 }
 
 .day.other-month {
-  color: #ccc;
+  color: #25e665;
   opacity: 0.5;
+}
+.day.other-month:hover {
+  color: #ffffff;
+  opacity: 100%;
 }

@@ -33,15 +33,7 @@ export default function Calendar() {
 
   // Function to get number of days in a month
   const getMonthDays = (month, year) => {
-    if (
-      month === 0 ||
-      month === 2 ||
-      month === 4 ||
-      month === 6 ||
-      month === 7 ||
-      month === 9 ||
-      month === 11
-    ) {
+    if (month === 0 || month === 2 || month === 4 || month === 6 || month === 7 || month === 9 || month === 11) {
       return 31;
     }
     if (month === 3 || month === 5 || month === 8 || month === 10) {
@@ -157,14 +149,14 @@ export default function Calendar() {
         <div id="calNav--btn--container">
           <img
             id="previous--month--button"
-            src="images/left-arrow.png"
+            src="public/left-arrow.png"
             alt="previous-month-button"
             onClick={handlePrevMonth}
             style={{ cursor: "pointer" }}
           />
           <img
             id="next--month--button"
-            src="images/right-arrow.png"
+            src="public/right-arrow.png"
             alt="next-month-button"
             onClick={handleNextMonth}
             style={{ cursor: "pointer" }}

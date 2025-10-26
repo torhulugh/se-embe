@@ -2,13 +2,7 @@ import "./style.css";
 
 export default function Events() {
   return (
-    <div>
-      <div id="right--section--table--header">
-                <p id="table--header--event">Event</p>
-                <p id="table--header--time">Celebrant</p>
-                <p id="table--header--location">Date</p>
-                <p id="table--header--status">Message</p>
-            </div>
+    
             <div id="right--section--table--body">
             {/* row start */}
             <div className="table--row--container">
@@ -20,9 +14,9 @@ export default function Events() {
                     warmth, and love you have given me every single day.
                 </p>
                 <div className="table--row--actionsButtons">
-                    <img className="edit--icon" src="images/edit-icon.png" alt="edit-icon" />
-                    <img className="delete--icon" src="images/delete-icon.png" alt="delete-icon" /> 
-                    <img src="images/share-icon.png" alt="share-icon" className="share" />
+                    <img className="edit--icon" src="public/edit-icon.png" alt="edit-icon" />
+                    <img className="delete--icon" src="public/delete-icon.png" alt="delete-icon" /> 
+                    <img src="public/share-icon.png" alt="share-icon" className="share" />
                 </div>
             </div>
             {/* row end */}
@@ -36,9 +30,9 @@ export default function Events() {
                     warmth, and love you have given me every single day.
                 </p>
                 <div className="table--row--actionsButtons">
-                    <img className="edit--icon" src="images/edit-icon.png" alt="edit-icon" />
-                    <img className="delete--icon" src="images/delete-icon.png" alt="delete-icon" /> 
-                    <img src="images/share-icon.png" alt="share-icon" className="share" />
+                    <img className="edit--icon" src="public/edit-icon.png" alt="edit-icon" />
+                    <img className="delete--icon" src="public/delete-icon.png" alt="delete-icon" /> 
+                    <img src="public/share-icon.png" alt="share-icon" className="share" />
                 </div>
             </div>
             {/* row end */}
@@ -52,9 +46,9 @@ export default function Events() {
                     warmth, and love you have given me every single day.
                 </p>
                 <div className="table--row--actionsButtons">
-                    <img className="edit--icon" src="images/edit-icon.png" alt="edit-icon" />
-                    <img className="delete--icon" src="images/delete-icon.png" alt="delete-icon" /> 
-                    <img src="images/share-icon.png" alt="share-icon" className="share" />
+                    <img className="edit--icon" src="public/edit-icon.png" alt="edit-icon" />
+                    <img className="delete--icon" src="public/delete-icon.png" alt="delete-icon" /> 
+                    <img src="public/share-icon.png" alt="share-icon" className="share" />
                 </div>
             </div>
             {/* row end */}
@@ -68,9 +62,9 @@ export default function Events() {
                     warmth, and love you have given me every single day.
                 </p>
                 <div className="table--row--actionsButtons">
-                    <img className="edit--icon" src="images/edit-icon.png" alt="edit-icon" />
-                    <img className="delete--icon" src="images/delete-icon.png" alt="delete-icon" /> 
-                    <img src="images/share-icon.png" alt="share-icon" className="share" />
+                    <img className="edit--icon" src="public/edit-icon.png" alt="edit-icon" />
+                    <img className="delete--icon" src="public/delete-icon.png" alt="delete-icon" /> 
+                    <img src="public/share-icon.png" alt="share-icon" className="share" />
                 </div>
             </div>
             {/* row end */}
@@ -84,9 +78,9 @@ export default function Events() {
                     warmth, and love you have given me every single day.
                 </p>
                 <div className="table--row--actionsButtons">
-                    <img className="edit--icon" src="images/edit-icon.png" alt="edit-icon" />
-                    <img className="delete--icon" src="images/delete-icon.png" alt="delete-icon" /> 
-                    <img src="images/share-icon.png" alt="share-icon" className="share" />
+                    <img className="edit--icon" src="public/edit-icon.png" alt="edit-icon" />
+                    <img className="delete--icon" src="public/delete-icon.png" alt="delete-icon" /> 
+                    <img src="public/share-icon.png" alt="share-icon" className="share" />
                 </div>
             </div>
             {/* row end */}
@@ -100,9 +94,9 @@ export default function Events() {
                     warmth, and love you have given me every single day.
                 </p>
                 <div className="table--row--actionsButtons">
-                    <img className="edit--icon" src="images/edit-icon.png" alt="edit-icon" />
-                    <img className="delete--icon" src="images/delete-icon.png" alt="delete-icon" /> 
-                    <img src="images/share-icon.png" alt="share-icon" className="share" />
+                    <img className="edit--icon" src="public/edit-icon.png" alt="edit-icon" />
+                    <img className="delete--icon" src="public/delete-icon.png" alt="delete-icon" /> 
+                    <img src="public/share-icon.png" alt="share-icon" className="share" />
                 </div>
             </div>
             {/* row end */}
@@ -116,13 +110,12 @@ export default function Events() {
                     warmth, and love you have given me every single day.
                 </p>
                 <div className="table--row--actionsButtons">
-                    <img className="edit--icon" src="images/edit-icon.png" alt="edit-icon" />
-                    <img className="delete--icon" src="images/delete-icon.png" alt="delete-icon" /> 
-                    <img src="images/share-icon.png" alt="share-icon" className="share"/>
+                    <img className="edit--icon" src="public/edit-icon.png" alt="edit-icon" />
+                    <img className="delete--icon" src="public/delete-icon.png" alt="delete-icon" /> 
+                    <img src="public/share-icon.png" alt="share-icon" className="share"/>
                 </div>
             </div>
             {/* row end */}
           </div>
-    </div>
   )
 }
