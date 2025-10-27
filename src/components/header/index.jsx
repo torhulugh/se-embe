@@ -22,10 +22,10 @@ export default function Header() {
           </div>
         </section>
         <section id="header--icons">
-          <img id="settings-icon" src="images/settings.png" alt="" />
-          <img id="notification-icon" src="images/notification.png" alt="" />
+          <img id="settings-icon" src="public/settings.png" alt="" />
+          <img id="notification-icon" src="public/notification.png" alt="" />
           <img
-            src="images/profile-pic.png"
+            src="public/profile-pic.png"
             alt="profile-pic"
             id="profile-pic"
           />

@@ -1,0 +1,100 @@
+#celebrants--profile-container{
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+    flex-wrap: wrap;
+    margin: 0px;
+    padding: 10px;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 40px;
+    gap: 5%;
+
+}
+.celebrant--card{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #B2AE59;
+    border-radius: 20px;
+    align-content: center;
+    width:190px ;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.055), -10px -10px 15px rgba(0, 0, 0, 0.055);
+    padding: 15px 0px;
+    
+    height: 230px;
+    gap: 10px;
+    margin: 0px;
+
+}
+.profile--pic{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    
+
+}
+.celebrants--name{
+    display: flex;
+    font: 1.2rem Arial, Helvetica, sans-serif;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    align-content: center;
+    width: fit-content;
+    height: fit-content;
+    gap: 10px;
+
+}
+.action--btn--container{
+    display: flex;
+    background-color: darkslategray;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    width: 85%;
+    border-radius: 8px;
+    height: 40px;
+    gap: 28px;
+
+}
+.edit--celebrantProfile{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    /* width: ;
+    height: ;
+    gap: ; */
+
+}
+.delete--celebrantProfile{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    /* width: ;
+    height: ;
+    gap: ; */
+
+}
+.createEvent--with--celebrantProfile{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    filter: opacity(60%);
+    align-content: center;
+    /* width: ;
+    height: ;
+    gap: ; */
+
+}

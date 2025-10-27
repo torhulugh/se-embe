@@ -1,0 +1,267 @@
+/* omuun button */
+.Omuun--button {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    background-image: radial-gradient(farthest-side at 20px -50px, #94a7a146 5%, #425C58 14%, #3D5D57 47%, #364C48 74%, #30453D 100%);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    width: 170px;
+    height: 40px;
+    text-align: center;
+    filter: drop-shadow(0px 4px 11px #64837ed2);
+}
+.Omuun--button--text {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    color: #d3d3d3;
+    width: 80%;
+    font-size: 0.8rem;
+    text-align: center;
+    filter: drop-shadow(1px 1px 1px #000000d0);
+    letter-spacing: 0.05rem;
+    z-index: 2;
+}
+.Omuun--button--inner {
+    display: flex;
+    position: relative;
+    background-image: linear-gradient(160deg, #313D39, #4D6356, #303C38);
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #8d9426;
+    cursor: pointer;
+    width: 95.8%;
+    filter: opacity(30%);
+    height: 85%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    justify-content: center;
+}
+.top--blur--effect {
+    display: flex;
+    background-color: #71918C;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    cursor: pointer;
+    width: 70%;
+    top: 7px;
+    filter: blur(4px);
+    height: 15%;
+    align-items: center;
+}
+.right--blur--effect {
+    display: flex;
+    background-color: #71918C;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    cursor: pointer;
+    width: 2.5px;
+    height: 20px;
+    top: 7px;
+    right: 10px;
+    filter: blur(2.8px);
+    
+    align-items: center;
+}
+.left--blur--effect {
+    display: flex;
+    background-color: #71918C;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    cursor: pointer;
+    width: 5px;
+    top: 8px;
+    left: 10px;
+    filter: blur(5px);
+    height: 20px;
+    align-items: center;
+}
+/* ............................................................................................ */
+
+
+/* active button */
+.Omuun--button.active {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    background-image: radial-gradient(farthest-side at 20px -50px, #94a7a146 5%, #425C58 14%, #3D5D57 47%, #364C48 74%, #30453D 100%);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    width: 170px;
+    height: 40px;
+    text-align: center;
+    filter: drop-shadow(0px 4px 11px #64837ed2);
+}
+.Omuun--button--text.active {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    color: #d3d3d3;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    font-size: 0.8rem;
+    text-align: center;
+    filter: drop-shadow(1px 1px 1px #000000d0);
+    letter-spacing: 0.05rem;
+    z-index: 2;
+}
+.Omuun--button--inner.active {
+    display: flex;
+    position: relative;
+    background-image: linear-gradient(160deg, #313D39, #4D6356, #303C38);
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #8d9426;
+    cursor: pointer;
+    width: 95.8%;
+    filter: opacity(30%);
+    height: 85%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    justify-content: center;
+}
+.top--blur--effect.active {
+    display: flex;
+    background-color: #71918C;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    cursor: pointer;
+    width: 70%;
+    top: 7px;
+    filter: blur(4px);
+    height: 15%;
+    align-items: center;
+}
+.right--blur--effect.active {
+    display: flex;
+    background-color: #71918C;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    cursor: pointer;
+    width: 2.5px;
+    height: 20px;
+    top: 7px;
+    right: 10px;
+    filter: blur(2.8px);
+    align-items: center;
+}
+.left--blur--effect.active {
+    display: flex;
+    background-color: #71918C;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    cursor: pointer;
+    width: 5px;
+    top: 8px;
+    left: 10px;
+    filter: blur(5px);
+    height: 20px;
+    align-items: center;
+}
+/* inactive button */
+.Omuun--button.inactive {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(90deg, #DBDBDD 0%, #dedfe2 3%, #F0EFEF 23%, #F0EFEF 94%, #DEDEDE 100%);
+    border-radius: 10px;
+    filter: drop-shadow(0px 4px 11px #cac8c834);
+    cursor: pointer;
+    width: 170px;
+    height: 40px;
+    border: 1px solid #afa9a949;
+    text-align: center;
+}
+.Omuun--button.inactive:hover {
+    scale: 1.05;
+}
+.Omuun--button.inactive:hover .top--blur--effect.inactive {
+    filter: blur(1.5px);
+}
+.Omuun--button--text.inactive {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    color: #030303;
+    box-shadow: none;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    filter: drop-shadow(1px 1px 1px transparent);
+    font-size: 0.8rem;
+    text-align: center;
+    letter-spacing: 0.05rem;
+    z-index: 2;
+}
+.Omuun--button--inner.inactive {
+    display: flex;
+    position: relative;
+    background-image: linear-gradient(160deg, transparent, transparent, transparent);
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    border: 1px solid #97920477;
+    cursor: pointer;
+    width: 95.8%;
+    height: 85%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    justify-content: center;
+}
+.top--blur--effect.inactive {
+    display: flex;
+    background-color: #ffffff;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    cursor: pointer;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    width: 90%;
+    top: 5px;
+    filter: blur(1.8px);
+    height: 15%;
+    align-items: center;
+}
+.right--blur--effect.inactive {
+    display: none;
+}
+.left--blur--effect.inactive {
+    display: none;
+    align-items: center;
+}
