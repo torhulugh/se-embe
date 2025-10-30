@@ -340,3 +340,33 @@ body {
 .input-group.error .error-message {
   display: block;
 }
+
+/* Additional Error Styling */
+.error-message {
+  color: #d32f2f;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  background-color: #ffebee;
+  border: 1px solid #ffcdd2;
+  border-radius: 4px;
+  font-size: 0.875rem;
+}
+
+.input-group input.error,
+.input-group input[type="checkbox"].error {
+  border-color: #d32f2f;
+  box-shadow: 0 0 0 2px rgba(211, 47, 47, 0.1);
+}
+
+.field-error {
+  color: #d32f2f;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  display: block;
+}
+
+.signup-btn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}

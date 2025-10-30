@@ -57,6 +57,7 @@
   align-content: center;
   padding: 0px 0px 20px 0px;
   width: 95%;
+  max-width: 380px;
   height: fit-content;
   margin: 0%;
   text-align: center;
@@ -107,7 +108,7 @@
   background-color: rgba(127, 255, 212, 0.212);
   border: 0.1px solid aquamarine;
   border-radius: 8px;
-  filter: opacity(60%);
+  filter: opacity(100%);
   cursor: pointer;
 }
 #previous--month--button:hover,
@@ -120,9 +121,10 @@
   display: flex;
   flex-wrap: wrap;
   position: relative;
-  max-width: 390px;
-  padding: 0px 0px 0px 10px;
+  max-width: 400px;
+  padding: 0px 0px 0px 12px;
   align-items: center;
+  justify-content: space-between;
   width: 100%;
   height: fit-content;
 }
@@ -133,7 +135,8 @@
   position: relative;
   width: 100%;
   max-width: 390px;
-  padding: 0px 0px 10px 10px;
+  justify-content: space-between;
+  padding: 0px 0px 0px 0px;
   align-items: center;
 }
 .weekday-container {
@@ -148,8 +151,8 @@
 .week--day {
   display: flex;
   position: relative;
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: fit-content;
   justify-content: flex-start;
   align-items: center;
   border-radius: 8px;

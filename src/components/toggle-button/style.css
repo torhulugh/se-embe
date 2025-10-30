@@ -1,267 +1,222 @@
-/* omuun button */
+/* Toggle Button Component Optimized CSS */
+
+/* Base container */
+.Omuun--button--container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Base button styles */
 .Omuun--button {
-    display: flex;
-    position: relative;
-    align-items: center;
-    justify-content: center;
-    background-image: radial-gradient(farthest-side at 20px -50px, #94a7a146 5%, #425C58 14%, #3D5D57 47%, #364C48 74%, #30453D 100%);
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    width: 170px;
-    height: 40px;
-    text-align: center;
-    filter: drop-shadow(0px 4px 11px #64837ed2);
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  background-image: radial-gradient(
+    farthest-side at 20px -50px, 
+    #94a7a146 5%, 
+    #425C58 14%, 
+    #3D5D57 47%, 
+    #364C48 74%, 
+    #30453D 100%
+  );
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  width: 170px;
+  height: 40px;
+  filter: drop-shadow(0px 4px 11px #64837ed2);
+  transition: all 0.3s ease;
 }
+
+/* Button text */
 .Omuun--button--text {
-    display: flex;
-    justify-content: center;
-    position: absolute;
-    color: #d3d3d3;
-    width: 80%;
-    font-size: 0.8rem;
-    text-align: center;
-    filter: drop-shadow(1px 1px 1px #000000d0);
-    letter-spacing: 0.05rem;
-    z-index: 2;
+  position: absolute;
+  color: #d3d3d3;
+  font-size: 0.8rem;
+  filter: drop-shadow(1px 1px 1px #000000d0);
+  letter-spacing: 0.05rem;
+  z-index: 2;
+  transition: color 0.3s ease;
 }
+
+/* Inner button element */
 .Omuun--button--inner {
-    display: flex;
-    position: relative;
-    background-image: linear-gradient(160deg, #313D39, #4D6356, #303C38);
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border: 1px solid #8d9426;
-    cursor: pointer;
-    width: 95.8%;
-    filter: opacity(30%);
-    height: 85%;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    justify-content: center;
+  position: relative;
+  background-image: linear-gradient(160deg, #313D39, #4D6356, #303C38);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #8d9426;
+  width: 95.8%;
+  height: 85%;
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
 }
-.top--blur--effect {
-    display: flex;
-    background-color: #71918C;
-    position: absolute;
-    align-items: center;
-    justify-content: center;
-    border-radius: 12px;
-    cursor: pointer;
-    width: 70%;
-    top: 7px;
-    filter: blur(4px);
-    height: 15%;
-    align-items: center;
-}
-.right--blur--effect {
-    display: flex;
-    background-color: #71918C;
-    position: absolute;
-    align-items: center;
-    justify-content: center;
-    border-radius: 12px;
-    cursor: pointer;
-    width: 2.5px;
-    height: 20px;
-    top: 7px;
-    right: 10px;
-    filter: blur(2.8px);
-    
-    align-items: center;
-}
+
+/* Blur effects */
+.top--blur--effect,
+.right--blur--effect,
 .left--blur--effect {
-    display: flex;
-    background-color: #71918C;
-    position: absolute;
-    align-items: center;
-    justify-content: center;
-    border-radius: 12px;
-    cursor: pointer;
-    width: 5px;
-    top: 8px;
-    left: 10px;
-    filter: blur(5px);
-    height: 20px;
-    align-items: center;
+  position: absolute;
+  background-color: #71918C;
+  border-radius: 12px;
+  transition: all 0.3s ease;
 }
-/* ............................................................................................ */
 
+.top--blur--effect {
+  width: 70%;
+  height: 15%;
+  top: 7px;
+  filter: blur(4px);
+}
 
-/* active button */
+.right--blur--effect {
+  width: 2.5px;
+  height: 20px;
+  top: 7px;
+  right: 10px;
+  filter: blur(2.8px);
+}
+
+.left--blur--effect {
+  width: 5px;
+  height: 20px;
+  top: 8px;
+  left: 10px;
+  filter: blur(5px);
+}
+
+/* Active state */
 .Omuun--button.active {
-    display: flex;
-    position: relative;
-    align-items: center;
-    justify-content: center;
-    background-image: radial-gradient(farthest-side at 20px -50px, #94a7a146 5%, #425C58 14%, #3D5D57 47%, #364C48 74%, #30453D 100%);
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    width: 170px;
-    height: 40px;
-    text-align: center;
-    filter: drop-shadow(0px 4px 11px #64837ed2);
+  background-image: radial-gradient(
+    farthest-side at 20px -50px, 
+    #B4C7A546 5%, 
+    #627C68 14%, 
+    #5D7D67 47%, 
+    #566C58 74%, 
+    #50654D 100%
+  );
+  filter: drop-shadow(0px 4px 11px #84A77ed2);
 }
+
 .Omuun--button--text.active {
-    display: flex;
-    justify-content: center;
-    position: absolute;
-    color: #d3d3d3;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-    font-size: 0.8rem;
-    text-align: center;
-    filter: drop-shadow(1px 1px 1px #000000d0);
-    letter-spacing: 0.05rem;
-    z-index: 2;
+  color: #f0f0f0;
 }
+
 .Omuun--button--inner.active {
-    display: flex;
-    position: relative;
-    background-image: linear-gradient(160deg, #313D39, #4D6356, #303C38);
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border: 1px solid #8d9426;
-    cursor: pointer;
-    width: 95.8%;
-    filter: opacity(30%);
-    height: 85%;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    justify-content: center;
+  background-image: linear-gradient(160deg, #515D59, #6D8366, #505C58);
+  border-color: #ad9426;
+  opacity: 0.8;
 }
+
 .top--blur--effect.active {
-    display: flex;
-    background-color: #71918C;
-    position: absolute;
-    align-items: center;
-    justify-content: center;
-    border-radius: 12px;
-    cursor: pointer;
-    width: 70%;
-    top: 7px;
-    filter: blur(4px);
-    height: 15%;
-    align-items: center;
+  background-color: #91B18C;
+  filter: blur(3px);
 }
+
 .right--blur--effect.active {
-    display: flex;
-    background-color: #71918C;
-    position: absolute;
-    align-items: center;
-    justify-content: center;
-    border-radius: 12px;
-    cursor: pointer;
-    width: 2.5px;
-    height: 20px;
-    top: 7px;
-    right: 10px;
-    filter: blur(2.8px);
-    align-items: center;
+  background-color: #91B18C;
+  filter: blur(2.5px);
 }
+
 .left--blur--effect.active {
-    display: flex;
-    background-color: #71918C;
-    position: absolute;
-    align-items: center;
-    justify-content: center;
-    border-radius: 12px;
-    cursor: pointer;
-    width: 5px;
-    top: 8px;
-    left: 10px;
-    filter: blur(5px);
-    height: 20px;
-    align-items: center;
+  background-color: #91B18C;
+  filter: blur(4px);
 }
-/* inactive button */
+
+/* Inactive state */
 .Omuun--button.inactive {
-    display: flex;
-    position: relative;
-    align-items: center;
-    justify-content: center;
-    background-image: linear-gradient(90deg, #DBDBDD 0%, #dedfe2 3%, #F0EFEF 23%, #F0EFEF 94%, #DEDEDE 100%);
-    border-radius: 10px;
-    filter: drop-shadow(0px 4px 11px #cac8c834);
-    cursor: pointer;
-    width: 170px;
-    height: 40px;
-    border: 1px solid #afa9a949;
-    text-align: center;
+  opacity: 0.7;
 }
-.Omuun--button.inactive:hover {
-    scale: 1.05;
+
+/* Hover effects */
+.Omuun--button:hover:not(.active) {
+  transform: translateY(-1px);
+  filter: drop-shadow(0px 6px 15px #64837ed2);
 }
-.Omuun--button.inactive:hover .top--blur--effect.inactive {
-    filter: blur(1.5px);
+
+/* Header button styles (from header component) */
+.Omuun--button--container--header {
+  display: flex;
+  gap: 15px;
+  align-items: center;
 }
-.Omuun--button--text.inactive {
-    display: flex;
-    justify-content: center;
-    position: absolute;
-    color: #030303;
-    box-shadow: none;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-    filter: drop-shadow(1px 1px 1px transparent);
-    font-size: 0.8rem;
-    text-align: center;
-    letter-spacing: 0.05rem;
-    z-index: 2;
+
+.Omuun--button--header {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  background-image: radial-gradient(
+    farthest-side at 20px -50px, 
+    #94a7a146 5%, 
+    #425C58 14%, 
+    #3D5D57 47%, 
+    #364C48 74%, 
+    #30453D 100%
+  );
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  width: 120px;
+  height: 35px;
+  filter: drop-shadow(0px 4px 11px #64837ed2);
+  transition: all 0.3s ease;
 }
-.Omuun--button--inner.inactive {
-    display: flex;
-    position: relative;
-    background-image: linear-gradient(160deg, transparent, transparent, transparent);
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-    border: 1px solid #97920477;
-    cursor: pointer;
-    width: 95.8%;
-    height: 85%;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    justify-content: center;
+
+.Omuun--button--text--header {
+  position: absolute;
+  color: #d3d3d3;
+  font-size: 0.75rem;
+  filter: drop-shadow(1px 1px 1px #000000d0);
+  letter-spacing: 0.05rem;
+  z-index: 2;
 }
-.top--blur--effect.inactive {
-    display: flex;
-    background-color: #ffffff;
-    position: absolute;
-    align-items: center;
-    justify-content: center;
-    border-radius: 12px;
-    cursor: pointer;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    width: 90%;
-    top: 5px;
-    filter: blur(1.8px);
-    height: 15%;
-    align-items: center;
+
+.Omuun--button--inner--header {
+  position: relative;
+  background-image: linear-gradient(160deg, #313D39, #4D6356, #303C38);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #8d9426;
+  width: 95.8%;
+  height: 85%;
+  opacity: 0.3;
 }
-.right--blur--effect.inactive {
-    display: none;
+
+.top--blur--effect--header,
+.right--blur--effect--header,
+.left--blur--effect--header {
+  position: absolute;
+  background-color: #71918C;
+  border-radius: 12px;
 }
-.left--blur--effect.inactive {
-    display: none;
-    align-items: center;
+
+.top--blur--effect--header {
+  width: 70%;
+  height: 15%;
+  top: 5px;
+  filter: blur(3px);
+}
+
+.right--blur--effect--header {
+  width: 2px;
+  height: 15px;
+  top: 5px;
+  right: 8px;
+  filter: blur(2.5px);
+}
+
+.left--blur--effect--header {
+  width: 4px;
+  height: 15px;
+  top: 6px;
+  left: 8px;
+  filter: blur(4px);
+}
+
+.Omuun--button--header:hover {
+  transform: translateY(-1px);
+  filter: drop-shadow(0px 6px 15px #64837ed2);
 }

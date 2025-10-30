@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import "./style.css";
 
 export default function Toggle({ activeView, setActiveView }) {
@@ -93,3 +94,8 @@ export default function Toggle({ activeView, setActiveView }) {
     </section>
   );
 }
+
+Toggle.propTypes = {
+  activeView: PropTypes.oneOf(["events", "celebrants"]).isRequired,
+  setActiveView: PropTypes.func.isRequired,
+};
