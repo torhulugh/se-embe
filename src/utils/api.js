@@ -1,6 +1,6 @@
 // API base URL
 const API_BASE_URL =
-  import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+  import.meta.env.VITE_API_URL || "http://localhost:8080/api";
 
 // Generic API call function
 const apiCall = async (endpoint, options = {}) => {
@@ -79,6 +79,39 @@ export const eventsAPI = {
   },
 };
 
+// Authentication API
+export const authAPI = {
+  // Register new user
+  register: async (userData) => {
+    return apiCall("/auth/register", {
+      method: "POST",
+      body: JSON.stringify(userData),
+    });
+  },
+
+  // Login user
+  login: async (email, password) => {
+    return apiCall("/auth/login", {
+      method: "POST",
+      body: JSON.stringify({ email, password }),
+    });
+  },
+
+  // Get current user profile
+  getProfile: async (token) => {
+    return apiCall("/auth/me", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  },
+
+  // Logout (client-side token removal)
+  logout: () => {
+    localStorage.removeItem("token");
+  },
+};
+
 // Celebrants API
 export const celebrantsAPI = {
   // Get all celebrants
@@ -143,5 +176,6 @@ export const handleAPIError = (error) => {
 export default {
   eventsAPI,
   celebrantsAPI,
+  authAPI,
   handleAPIError,
 };
