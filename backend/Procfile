@@ -1,3 +1,0 @@
-# Backend for Railway/Render
-
-web: node server.js
