@@ -13,7 +13,9 @@
     "start:both": "concurrently \"npm run backend:dev\" \"npm run dev\"",
     "deploy:build": "npm run build",
     "deploy:preview": "npm run build && npm run preview",
-    "prepare:deploy": "npm run lint && npm run build"
+    "prepare:deploy": "npm run lint && npm run build",
+    "cf:pages:deploy": "npm run build && wrangler pages deploy dist",
+    "cf:pages:preview": "npm run build && wrangler pages deploy dist --compatibility-date=2024-01-15 --project-name=se-embe-preview"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -37,6 +39,7 @@
     "globals": "^16.4.0",
     "nodemon": "^3.1.10",
     "rollup-plugin-visualizer": "^6.0.5",
+    "terser": "^5.44.0",
     "vite": "^7.1.7"
   }
 }

@@ -6,8 +6,48 @@ echo "🚀 Se-Embe Deployment Helper"
 echo "=========================="
 
 # Build frontend
-echo "📦 Building frontend..."
+#!/bin/bash
+
+echo "� Se-Embe Deployment to Cloudflare"
+echo "=================================="
+
+# Check if wrangler is installed
+if ! command -v wrangler &> /dev/null; then
+    echo "❌ Wrangler CLI not found. Installing..."
+    npm install -g wrangler
+fi
+
+# Install dependencies
+echo "�📦 Installing dependencies..."
+npm install
+
+# Run linting
+echo "🔍 Running linting..."
+npm run lint
+if [ $? -ne 0 ]; then
+    echo "❌ Linting failed! Please fix errors before deploying."
+    exit 1
+fi
+
+# Build for production
+echo "🏗️  Building for production..."
 npm run build
+if [ $? -ne 0 ]; then
+    echo "❌ Build failed!"
+    exit 1
+fi
+
+# Deploy to Cloudflare Pages
+echo "🚀 Deploying to Cloudflare Pages..."
+wrangler pages deploy dist --project-name se-embe --compatibility-date 2024-01-15
+
+if [ $? -eq 0 ]; then
+    echo "✅ Deployment completed successfully!"
+    echo "🌐 Your app should be available at: https://se-embe.pages.dev"
+else
+    echo "❌ Deployment failed!"
+    exit 1
+fi
 
 if [ $? -eq 0 ]; then
     echo "✅ Frontend build successful!"

@@ -1,0 +1,10 @@
+# Railway deployment configuration
+
+[build]
+provider = "nixpacks"
+
+[build.nixpacks]
+startCommand = "npm start"
+
+[deploy]
+environmentSource = "railway"

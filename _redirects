@@ -1,13 +1,9 @@
-# Cloudflare Pages Build Configuration
-[build]
-  command = "npm run build"
-  publish = "dist"
+# Cloudflare Pages SPA routing
+/*    /index.html   200
 
-[build.environment]
-  NODE_VERSION = "18"
-  NPM_VERSION = "8"
+# API redirects (if using Cloudflare Workers for backend)
+/api/*  https://your-backend-url.com/api/:splat  200
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+# Security redirects
+/admin/*  /  301
+/.env*  /  301

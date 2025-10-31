@@ -13,6 +13,7 @@ export default defineConfig({
     }),
   ],
   build: {
+    target: "esnext",
     rollupOptions: {
       output: {
         manualChunks: (id) => {
@@ -28,5 +29,15 @@ export default defineConfig({
         },
       },
     },
+    sourcemap: false, // Disable for production
+    minify: "terser",
+  },
+  preview: {
+    port: 4173,
+    strictPort: true,
+  },
+  server: {
+    port: 5173,
+    strictPort: true,
   },
 });
