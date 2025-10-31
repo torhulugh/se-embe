@@ -12,17 +12,17 @@ const PORT = process.env.PORT || 5000;
 // CORS configuration for production deployment
 const corsOptions = {
   origin: [
-    'http://localhost:5173',
-    'http://localhost:5174', 
-    'http://localhost:5175',
-    'https://abc6b38d.se-embe.pages.dev',
-    'https://se-embe.pages.dev',
-    'https://*.pages.dev', // Allow all Cloudflare Pages subdomains
+    "http://localhost:5173",
+    "http://localhost:5174",
+    "http://localhost:5175",
+    "https://abc6b38d.se-embe.pages.dev",
+    "https://se-embe.pages.dev",
+    "https://*.pages.dev", // Allow all Cloudflare Pages subdomains
     // Add your custom domain here when you have one
     // 'https://your-custom-domain.com'
   ],
   credentials: true,
-  optionsSuccessStatus: 200 // For legacy browser support
+  optionsSuccessStatus: 200, // For legacy browser support
 };
 
 // Middleware
