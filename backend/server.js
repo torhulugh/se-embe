@@ -40,8 +40,18 @@ app.use((err, req, res, next) => {
 });
 
 // Start server
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+app
+  .listen(PORT, "localhost", () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Test the API at: http://localhost:${PORT}/`);
+  })
+  .on("error", (err) => {
+    console.error("Server startup error:", err);
+    if (err.code === "EADDRINUSE") {
+      console.error(
+        `Port ${PORT} is already in use. Please stop other services or change the port.`
+      );
+    }
+  });
 
 export default app;

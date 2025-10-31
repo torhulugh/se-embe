@@ -22,6 +22,16 @@
     "nodemon": "^3.0.1"
   },
   "engines": {
-    "node": ">=14.0.0"
-  }
+    "node": "18.x",
+    "npm": "8.x"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "mongodb",
+    "rest-api",
+    "authentication"
+  ],
+  "author": "Se-Embe Team",
+  "license": "MIT"
 }

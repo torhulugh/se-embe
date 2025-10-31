@@ -22,14 +22,11 @@ export default function AddEventForm({
     if (editMode && eventData) {
       // Find the celebrant ID from the name
       const celebrant = celebrants.find((c) => c.name === eventData.celebrant);
-      const celebrantId = celebrant ? celebrant.id.toString() : "";
-
-      // Convert event type back to form format (lowercase with dashes)
-      const eventType = eventData.event.toLowerCase().replace(/\s+/g, "-");
+      const celebrantId = celebrant ? celebrant._id : "";
 
       setFormData({
         celebrant: celebrantId,
-        eventType: eventType,
+        eventType: eventData.event,
         eventDate: eventData.date,
         message: eventData.message,
       });
@@ -68,20 +65,21 @@ export default function AddEventForm({
       return;
     }
 
-    // Find the selected celebrant name
+    // Find the selected celebrant
     const selectedCelebrant = celebrants.find(
-      (c) => c.id.toString() === formData.celebrant
+      (c) => c._id === formData.celebrant
     );
-    const celebrantName = selectedCelebrant
-      ? selectedCelebrant.name
-      : formData.celebrant;
 
-    // Save the event data
+    if (!selectedCelebrant) {
+      alert("Selected celebrant not found");
+      return;
+    }
+
+    // Save the event data with proper structure for MongoDB
     const eventDataToSave = {
-      event: formData.eventType
-        .replace("-", " ")
-        .replace(/\b\w/g, (l) => l.toUpperCase()),
-      celebrant: celebrantName,
+      event: formData.eventType,
+      celebrant: selectedCelebrant.name,
+      celebrantId: selectedCelebrant._id,
       date: formData.eventDate,
       message: formData.message.trim(),
     };
@@ -140,7 +138,7 @@ export default function AddEventForm({
                   </option>
                 ) : (
                   celebrants.map((celebrant) => (
-                    <option key={celebrant.id} value={celebrant.id}>
+                    <option key={celebrant._id} value={celebrant._id}>
                       {celebrant.name}
                     </option>
                   ))

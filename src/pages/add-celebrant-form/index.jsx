@@ -102,20 +102,22 @@ export default function AddCelebrantForm({
                 required
               >
                 <option value="default">Select Relationship</option>
-                <option value="self">Self</option>
-                <option value="friend">Friend</option>
-                <option value="family">Brother</option>
-                <option value="colleague">Sister</option>
-                <option value="colleague">Son</option>
-                <option value="colleague">Daughter</option>
-                <option value="colleague">Nephew</option>
-                <option value="colleague">Niece</option>
-                <option value="colleague">Nibling</option>
-                <option value="colleague">Male friend</option>
-                <option value="colleague">Female friend</option>
-                <option value="colleague">Male cousin</option>
-                <option value="colleague">Female cousin</option>
-                <option value="other">Other</option>
+                <option value="Father">Father</option>
+                <option value="Mother">Mother</option>
+                <option value="Brother">Brother</option>
+                <option value="Sister">Sister</option>
+                <option value="Uncle">Uncle</option>
+                <option value="Aunt">Aunt</option>
+                <option value="Grandfather">Grandfather</option>
+                <option value="Grandmother">Grandmother</option>
+                <option value="Cousin">Cousin</option>
+                <option value="Friend">Friend</option>
+                <option value="Colleague">Colleague</option>
+                <option value="Partner">Partner</option>
+                <option value="Spouse">Spouse</option>
+                <option value="Son">Son</option>
+                <option value="Daughter">Daughter</option>
+                <option value="Other">Other</option>
               </select>
             </div>
             {/* age */}
@@ -130,11 +132,11 @@ export default function AddCelebrantForm({
                 onChange={handleInputChange}
               >
                 <option value="default">Select Age Group</option>
-                <option value="child">Child (0-12)</option>
-                <option value="teen">Teen (13-19)</option>
-                <option value="young-adult">Young Adult (20-35)</option>
-                <option value="adult">Adult (36-55)</option>
-                <option value="senior">Senior (56+)</option>
+                <option value="Child">Child</option>
+                <option value="Teen">Teen</option>
+                <option value="Young Adult">Young Adult</option>
+                <option value="Adult">Adult</option>
+                <option value="Senior">Senior</option>
               </select>
             </div>
 

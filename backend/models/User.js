@@ -63,8 +63,7 @@ userSchema.virtual("celebrants", {
   foreignField: "userId",
 });
 
-// Note: Email index is already created by unique: true in schema
-// Removed duplicate: userSchema.index({ email: 1 });
+
 
 // Pre-save middleware to hash password
 userSchema.pre("save", async function (next) {

@@ -1,37 +1,44 @@
-import PropTypes from "prop-types";
+import { useMongoCelebrants } from "../../hooks/mongoHooks";
+import LazyImage from "../common/LazyImage";
 import "./style.css";
 
 const CelebrantCard = ({ celebrant, onEdit, onDelete, onCreate, onView }) => (
   <div
     className="celebrant--card"
-    onClick={onView}
+    onClick={() => onView(celebrant._id)}
     style={{ cursor: "pointer" }}
   >
-    <img src={celebrant.image} alt="profile-picture" className="profile--pic" />
+    <LazyImage
+      src={celebrant.image || "public/default-profile.png"}
+      alt="profile-picture"
+      className="profile--pic"
+    />
     <p className="celebrants--name">{celebrant.name}</p>
+    <p className="celebrant--relationship">{celebrant.relationship}</p>
+    <p className="celebrant--age-group">{celebrant.ageGroup}</p>
     <div
       className="action--btn--container"
       onClick={(e) => e.stopPropagation()}
     >
-      <img
-        src="/edit-icon.png"
+      <LazyImage
+        src="public/edit-icon.png"
         alt="edit-celebrant"
         className="edit--celebrantProfile"
-        onClick={onEdit}
+        onClick={() => onEdit(celebrant._id)}
         style={{ cursor: "pointer" }}
       />
-      <img
-        src="/delete-icon.png"
+      <LazyImage
+        src="public/delete-icon.png"
         alt="delete-celebrant"
         className="delete--celebrantProfile"
-        onClick={onDelete}
+        onClick={() => onDelete(celebrant._id)}
         style={{ cursor: "pointer" }}
       />
-      <img
-        src="/create-evnt-icon.png"
+      <LazyImage
+        src="public/create-evnt-icon.png"
         alt="create-event"
         className="createEvent--with--celebrantProfile"
-        onClick={onCreate}
+        onClick={() => onCreate(celebrant._id)}
         style={{ cursor: "pointer" }}
       />
     </div>
@@ -44,78 +51,88 @@ export default function CelebrantsProfile({
   onEditCelebrant,
   onViewCelebrant,
 }) {
-  const {
-    celebrants,
-    editCelebrant,
-    deleteCelebrant,
-    createEventForCelebrant,
-  } = celebrantsHook;
-
-  const containerStyle = {
-    display: activeView === "celebrants" ? "flex" : "none",
-  };
-
-  const handleView = (celebrantId) => {
-    if (onViewCelebrant) {
-      onViewCelebrant(celebrantId);
-    }
-  };
+  const { celebrants, loading, error, deleteCelebrant, refreshCelebrants } =
+    celebrantsHook || useMongoCelebrants();
 
   const handleEdit = (celebrantId) => {
     if (onEditCelebrant) {
       onEditCelebrant(celebrantId);
     } else {
       console.log("Edit celebrant:", celebrantId);
-      // TODO: Implement edit functionality
     }
   };
 
-  const handleDelete = (celebrantId) => {
+  const handleDelete = async (celebrantId) => {
     if (window.confirm("Are you sure you want to delete this celebrant?")) {
-      deleteCelebrant(celebrantId);
+      const result = await deleteCelebrant(celebrantId);
+      if (result.success) {
+        console.log("Celebrant deleted successfully");
+      } else {
+        alert(`Failed to delete celebrant: ${result.error}`);
+      }
     }
   };
 
   const handleCreateEvent = (celebrantId) => {
-    createEventForCelebrant(celebrantId);
+    // TODO: Navigate to create event page with celebrant pre-selected
+    console.log("Create event for celebrant:", celebrantId);
   };
 
+  const handleView = (celebrantId) => {
+    if (onViewCelebrant) {
+      onViewCelebrant(celebrantId);
+    } else {
+      console.log("View celebrant:", celebrantId);
+    }
+  };
+
+  // Don't render if not active view
+  if (activeView !== "celebrants") {
+    return null;
+  }
+
+  // Loading state
+  if (loading) {
+    return (
+      <div className="loading-container">
+        <p>Loading celebrants...</p>
+      </div>
+    );
+  }
+
+  // Error state
+  if (error) {
+    return (
+      <div className="error-container">
+        <p>Error loading celebrants: {error}</p>
+        <button onClick={refreshCelebrants} className="retry-button">
+          Retry
+        </button>
+      </div>
+    );
+  }
+
+  // Empty state
+  if (celebrants.length === 0) {
+    return (
+      <div className="empty-state">
+        <p>No celebrants found. Add your first celebrant!</p>
+      </div>
+    );
+  }
+
   return (
-    <div id="celebrants--profile-container" style={containerStyle}>
+    <div className="celebrants--container">
       {celebrants.map((celebrant) => (
         <CelebrantCard
-          key={celebrant.id}
+          key={celebrant._id}
           celebrant={celebrant}
-          onView={() => handleView(celebrant.id)}
-          onEdit={() => handleEdit(celebrant.id)}
-          onDelete={() => handleDelete(celebrant.id)}
-          onCreate={() => handleCreateEvent(celebrant.id)}
+          onEdit={handleEdit}
+          onDelete={handleDelete}
+          onCreate={handleCreateEvent}
+          onView={handleView}
         />
       ))}
     </div>
   );
 }
-
-CelebrantsProfile.propTypes = {
-  activeView: PropTypes.oneOf(["events", "celebrants"]).isRequired,
-  celebrantsHook: PropTypes.shape({
-    celebrants: PropTypes.array.isRequired,
-    editCelebrant: PropTypes.func.isRequired,
-    deleteCelebrant: PropTypes.func.isRequired,
-    createEventForCelebrant: PropTypes.func.isRequired,
-  }).isRequired,
-  onEditCelebrant: PropTypes.func,
-  onViewCelebrant: PropTypes.func,
-};
-
-CelebrantCard.propTypes = {
-  celebrant: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-  }).isRequired,
-  onView: PropTypes.func.isRequired,
-  onEdit: PropTypes.func.isRequired,
-  onDelete: PropTypes.func.isRequired,
-  onCreate: PropTypes.func.isRequired,
-};

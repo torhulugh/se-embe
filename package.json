@@ -10,7 +10,10 @@
     "preview": "vite preview",
     "backend": "cd backend && node server.js",
     "backend:dev": "cd backend && nodemon server.js",
-    "start:both": "concurrently \"npm run backend:dev\" \"npm run dev\""
+    "start:both": "concurrently \"npm run backend:dev\" \"npm run dev\"",
+    "deploy:build": "npm run build",
+    "deploy:preview": "npm run build && npm run preview",
+    "prepare:deploy": "npm run lint && npm run build"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -19,7 +22,8 @@
     "mongoose": "^8.19.2",
     "prop-types": "^15.8.1",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react-dom": "^19.1.1",
+    "react-router-dom": "^7.9.5"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",
@@ -32,6 +36,7 @@
     "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^16.4.0",
     "nodemon": "^3.1.10",
+    "rollup-plugin-visualizer": "^6.0.5",
     "vite": "^7.1.7"
   }
 }

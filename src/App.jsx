@@ -11,7 +11,11 @@ import ViewCelebrant from "./pages/view-celebrant/";
 import Login from "./pages/login/";
 import SignUp from "./pages/sign-up/";
 import { AuthProvider, useAuth } from "./contexts/AuthContext";
-import { useActiveView, useEvents, useCelebrants } from "./hooks";
+import {
+  useActiveView,
+  useMongoEvents,
+  useMongoCelebrants,
+} from "./hooks/mongoHooks";
 
 import "./App.css";
 
@@ -29,8 +33,8 @@ function AppContent() {
   const { isAuthenticated, isLoading, user, logout } = useAuth();
   const { activeView, setActiveView, isEventsView, isCelebrantsView } =
     useActiveView("events");
-  const eventsHook = useEvents();
-  const celebrantsHook = useCelebrants();
+  const eventsHook = useMongoEvents();
+  const celebrantsHook = useMongoCelebrants();
 
   // Navigation state
   const [currentPage, setCurrentPage] = useState("dashboard"); // 'dashboard', 'add-event', 'add-celebrant', 'view-celebrant', 'login', 'signup'
@@ -129,7 +133,7 @@ function AppContent() {
   if (currentPage === "add-event") {
     const eventData =
       editMode.isEditing && editMode.itemType === "event"
-        ? eventsHook.getEventById(editMode.itemId)
+        ? eventsHook.events.find((e) => e._id === editMode.itemId)
         : null;
 
     return (
@@ -141,13 +145,25 @@ function AppContent() {
         />
         <AddEventForm
           onNavigateBack={navigateToDashboard}
-          onSaveEvent={(eventData) => {
+          onSaveEvent={async (eventData) => {
             if (editMode.isEditing) {
-              eventsHook.editEvent(editMode.itemId, eventData);
+              const result = await eventsHook.editEvent(
+                editMode.itemId,
+                eventData
+              );
+              if (result.success) {
+                navigateToDashboard();
+              } else {
+                alert(`Failed to update event: ${result.error}`);
+              }
             } else {
-              eventsHook.addEvent(eventData);
+              const result = await eventsHook.addEvent(eventData);
+              if (result.success) {
+                navigateToDashboard();
+              } else {
+                alert(`Failed to create event: ${result.error}`);
+              }
             }
-            navigateToDashboard();
           }}
           celebrants={celebrantsHook.celebrants}
           onNavigateToAddCelebrant={navigateToAddCelebrant}
@@ -161,7 +177,7 @@ function AppContent() {
   if (currentPage === "add-celebrant") {
     const celebrantData =
       editMode.isEditing && editMode.itemType === "celebrant"
-        ? celebrantsHook.getCelebrantById(editMode.itemId)
+        ? celebrantsHook.celebrants.find((c) => c._id === editMode.itemId)
         : null;
 
     return (
@@ -173,13 +189,25 @@ function AppContent() {
         />
         <AddCelebrantForm
           onNavigateBack={navigateToDashboard}
-          onSaveCelebrant={(celebrantData) => {
+          onSaveCelebrant={async (celebrantData) => {
             if (editMode.isEditing) {
-              celebrantsHook.editCelebrant(editMode.itemId, celebrantData);
+              const result = await celebrantsHook.editCelebrant(
+                editMode.itemId,
+                celebrantData
+              );
+              if (result.success) {
+                navigateToDashboard();
+              } else {
+                alert(`Failed to update celebrant: ${result.error}`);
+              }
             } else {
-              celebrantsHook.addCelebrant(celebrantData);
+              const result = await celebrantsHook.addCelebrant(celebrantData);
+              if (result.success) {
+                navigateToDashboard();
+              } else {
+                alert(`Failed to create celebrant: ${result.error}`);
+              }
             }
-            navigateToDashboard();
           }}
           editMode={editMode.isEditing}
           celebrantData={celebrantData}
@@ -190,7 +218,7 @@ function AppContent() {
 
   if (currentPage === "view-celebrant") {
     const celebrantData = viewState.celebrantId
-      ? celebrantsHook.getCelebrantById(viewState.celebrantId)
+      ? celebrantsHook.celebrants.find((c) => c._id === viewState.celebrantId)
       : null;
 
     return (

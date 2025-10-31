@@ -1,14 +1,21 @@
 // API base URL
 const API_BASE_URL =
-  import.meta.env.VITE_API_URL || "http://localhost:8080/api";
+  import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+
+// Get token from localStorage
+const getAuthToken = () => {
+  return localStorage.getItem("token");
+};
 
 // Generic API call function
 const apiCall = async (endpoint, options = {}) => {
   const url = `${API_BASE_URL}${endpoint}`;
+  const token = getAuthToken();
 
   const defaultOptions = {
     headers: {
       "Content-Type": "application/json",
+      ...(token && { Authorization: `Bearer ${token}` }),
     },
   };
 

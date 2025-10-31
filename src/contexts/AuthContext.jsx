@@ -2,7 +2,8 @@ import React, { createContext, useContext, useReducer, useEffect } from "react";
 import PropTypes from "prop-types";
 
 // API base URL
-const API_BASE_URL = "http://localhost:8080/api";
+const API_BASE_URL =
+  import.meta.env.VITE_API_URL || "http://localhost:5000/api";
 
 // Create Auth Context
 const AuthContext = createContext();

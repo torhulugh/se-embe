@@ -1,5 +1,6 @@
 import { useState, useCallback, useEffect } from "react";
 import { eventsAPI, celebrantsAPI, handleAPIError } from "../utils/api.js";
+import { useAuth } from "../contexts/AuthContext";
 
 /**
  * Custom hook for managing active view state
@@ -31,78 +32,116 @@ export const useEvents = () => {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const { isAuthenticated, token } = useAuth();
 
   // Fetch all events
-  const refreshEvents = useCallback(async (params = {}) => {
-    setLoading(true);
-    setError(null);
-    try {
-      const response = await eventsAPI.getAll(params);
-      setEvents(response.data || []);
-    } catch (err) {
-      setError(handleAPIError(err));
-      console.error("Error fetching events:", err);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
+  const refreshEvents = useCallback(
+    async (params = {}) => {
+      if (!isAuthenticated || !token) {
+        setEvents([]);
+        setLoading(false);
+        return;
+      }
 
-  // Load events on mount
+      setLoading(true);
+      setError(null);
+      try {
+        const response = await eventsAPI.getAll(params);
+        setEvents(response.data || []);
+      } catch (err) {
+        setError(handleAPIError(err));
+        console.error("Error fetching events:", err);
+        // If authentication error, clear events
+        if (
+          err.message.includes("401") ||
+          err.message.includes("unauthorized")
+        ) {
+          setEvents([]);
+        }
+      } finally {
+        setLoading(false);
+      }
+    },
+    [isAuthenticated, token]
+  );
+
+  // Load events on mount and when auth changes
   useEffect(() => {
     refreshEvents();
-  }, [refreshEvents]);
+  }, [refreshEvents, isAuthenticated]);
 
   // Add new event
-  const addEvent = useCallback(async (newEvent) => {
-    setLoading(true);
-    setError(null);
-    try {
-      const response = await eventsAPI.create(newEvent);
-      setEvents((prev) => [...prev, response.data]);
-      return response.data;
-    } catch (err) {
-      setError(handleAPIError(err));
-      console.error("Error adding event:", err);
-      throw err;
-    } finally {
-      setLoading(false);
-    }
-  }, []);
+  const addEvent = useCallback(
+    async (newEvent) => {
+      if (!isAuthenticated) {
+        throw new Error("Please login to add events");
+      }
+
+      setLoading(true);
+      setError(null);
+      try {
+        const response = await eventsAPI.create(newEvent);
+        setEvents((prev) => [...prev, response.data]);
+        return response.data;
+      } catch (err) {
+        setError(handleAPIError(err));
+        console.error("Error adding event:", err);
+        throw err;
+      } finally {
+        setLoading(false);
+      }
+    },
+    [isAuthenticated]
+  );
 
   // Edit event
-  const editEvent = useCallback(async (eventId, updatedEvent) => {
-    setLoading(true);
-    setError(null);
-    try {
-      const response = await eventsAPI.update(eventId, updatedEvent);
-      setEvents((prev) =>
-        prev.map((event) => (event._id === eventId ? response.data : event))
-      );
-      return response.data;
-    } catch (err) {
-      setError(handleAPIError(err));
-      console.error("Error editing event:", err);
-      throw err;
-    } finally {
-      setLoading(false);
-    }
-  }, []);
+  const editEvent = useCallback(
+    async (eventId, updatedEvent) => {
+      if (!isAuthenticated) {
+        throw new Error("Please login to edit events");
+      }
+
+      setLoading(true);
+      setError(null);
+      try {
+        const response = await eventsAPI.update(eventId, updatedEvent);
+        setEvents((prev) =>
+          prev.map((event) => (event._id === eventId ? response.data : event))
+        );
+        return response.data;
+      } catch (err) {
+        setError(handleAPIError(err));
+        console.error("Error editing event:", err);
+        throw err;
+      } finally {
+        setLoading(false);
+      }
+    },
+    [isAuthenticated]
+  );
 
   // Delete event
-  const deleteEvent = useCallback(async (eventId) => {
-    setLoading(true);
-    setError(null);
-    try {
-      await eventsAPI.delete(eventId);
-      setEvents((prev) => prev.filter((event) => event._id !== eventId));
-    } catch (err) {
-      setError(handleAPIError(err));
-      console.error("Error deleting event:", err);
-      throw err;
-    } finally {
-      setLoading(false);
-    }
-  }, []);
+  const deleteEvent = useCallback(
+    async (eventId) => {
+      if (!isAuthenticated) {
+        throw new Error("Please login to delete events");
+      }
+
+      setLoading(true);
+      setError(null);
+      try {
+        await eventsAPI.delete(eventId);
+        setEvents((prev) => prev.filter((event) => event._id !== eventId));
+      } catch (err) {
+        setError(handleAPIError(err));
+        console.error("Error deleting event:", err);
+        throw err;
+      } finally {
+        setLoading(false);
+      }
+    },
+    [isAuthenticated]
+  );
 
   // Share event
   const shareEvent = useCallback(
@@ -172,85 +211,123 @@ export const useCelebrants = () => {
   const [celebrants, setCelebrants] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const { isAuthenticated, token } = useAuth();
 
   // Fetch all celebrants
-  const refreshCelebrants = useCallback(async (params = {}) => {
-    setLoading(true);
-    setError(null);
-    try {
-      const response = await celebrantsAPI.getAll(params);
-      setCelebrants(response.data || []);
-    } catch (err) {
-      setError(handleAPIError(err));
-      console.error("Error fetching celebrants:", err);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
+  const refreshCelebrants = useCallback(
+    async (params = {}) => {
+      if (!isAuthenticated || !token) {
+        setCelebrants([]);
+        setLoading(false);
+        return;
+      }
 
-  // Load celebrants on mount
+      setLoading(true);
+      setError(null);
+      try {
+        const response = await celebrantsAPI.getAll(params);
+        setCelebrants(response.data || []);
+      } catch (err) {
+        setError(handleAPIError(err));
+        console.error("Error fetching celebrants:", err);
+        // If authentication error, clear celebrants
+        if (
+          err.message.includes("401") ||
+          err.message.includes("unauthorized")
+        ) {
+          setCelebrants([]);
+        }
+      } finally {
+        setLoading(false);
+      }
+    },
+    [isAuthenticated, token]
+  );
+
+  // Load celebrants on mount and when auth changes
   useEffect(() => {
     refreshCelebrants();
-  }, [refreshCelebrants]);
+  }, [refreshCelebrants, isAuthenticated]);
 
   // Add new celebrant
-  const addCelebrant = useCallback(async (newCelebrant) => {
-    setLoading(true);
-    setError(null);
-    try {
-      const response = await celebrantsAPI.create(newCelebrant);
-      setCelebrants((prev) => [...prev, response.data]);
-      return response.data;
-    } catch (err) {
-      setError(handleAPIError(err));
-      console.error("Error adding celebrant:", err);
-      throw err;
-    } finally {
-      setLoading(false);
-    }
-  }, []);
+  const addCelebrant = useCallback(
+    async (newCelebrant) => {
+      if (!isAuthenticated) {
+        throw new Error("Please login to add celebrants");
+      }
+
+      setLoading(true);
+      setError(null);
+      try {
+        const response = await celebrantsAPI.create(newCelebrant);
+        setCelebrants((prev) => [...prev, response.data]);
+        return response.data;
+      } catch (err) {
+        setError(handleAPIError(err));
+        console.error("Error adding celebrant:", err);
+        throw err;
+      } finally {
+        setLoading(false);
+      }
+    },
+    [isAuthenticated]
+  );
 
   // Edit celebrant
-  const editCelebrant = useCallback(async (celebrantId, updatedCelebrant) => {
-    setLoading(true);
-    setError(null);
-    try {
-      const response = await celebrantsAPI.update(
-        celebrantId,
-        updatedCelebrant
-      );
-      setCelebrants((prev) =>
-        prev.map((celebrant) =>
-          celebrant._id === celebrantId ? response.data : celebrant
-        )
-      );
-      return response.data;
-    } catch (err) {
-      setError(handleAPIError(err));
-      console.error("Error editing celebrant:", err);
-      throw err;
-    } finally {
-      setLoading(false);
-    }
-  }, []);
+  const editCelebrant = useCallback(
+    async (celebrantId, updatedCelebrant) => {
+      if (!isAuthenticated) {
+        throw new Error("Please login to edit celebrants");
+      }
+
+      setLoading(true);
+      setError(null);
+      try {
+        const response = await celebrantsAPI.update(
+          celebrantId,
+          updatedCelebrant
+        );
+        setCelebrants((prev) =>
+          prev.map((celebrant) =>
+            celebrant._id === celebrantId ? response.data : celebrant
+          )
+        );
+        return response.data;
+      } catch (err) {
+        setError(handleAPIError(err));
+        console.error("Error editing celebrant:", err);
+        throw err;
+      } finally {
+        setLoading(false);
+      }
+    },
+    [isAuthenticated]
+  );
 
   // Delete celebrant
-  const deleteCelebrant = useCallback(async (celebrantId) => {
-    setLoading(true);
-    setError(null);
-    try {
-      await celebrantsAPI.delete(celebrantId);
-      setCelebrants((prev) =>
-        prev.filter((celebrant) => celebrant._id !== celebrantId)
-      );
-    } catch (err) {
-      setError(handleAPIError(err));
-      console.error("Error deleting celebrant:", err);
-      throw err;
-    } finally {
-      setLoading(false);
-    }
-  }, []);
+  const deleteCelebrant = useCallback(
+    async (celebrantId) => {
+      if (!isAuthenticated) {
+        throw new Error("Please login to delete celebrants");
+      }
+
+      setLoading(true);
+      setError(null);
+      try {
+        await celebrantsAPI.delete(celebrantId);
+        setCelebrants((prev) =>
+          prev.filter((celebrant) => celebrant._id !== celebrantId)
+        );
+      } catch (err) {
+        setError(handleAPIError(err));
+        console.error("Error deleting celebrant:", err);
+        throw err;
+      } finally {
+        setLoading(false);
+      }
+    },
+    [isAuthenticated]
+  );
 
   // Create event for celebrant
   const createEventForCelebrant = useCallback((celebrantId) => {
@@ -261,6 +338,10 @@ export const useCelebrants = () => {
   // Get celebrant by ID
   const getCelebrantById = useCallback(
     async (celebrantId) => {
+      if (!isAuthenticated) {
+        return null;
+      }
+
       try {
         const response = await celebrantsAPI.getById(celebrantId);
         return response.data;
@@ -270,7 +351,7 @@ export const useCelebrants = () => {
         return celebrants.find((celebrant) => celebrant._id === celebrantId);
       }
     },
-    [celebrants]
+    [celebrants, isAuthenticated]
   );
 
   return {
